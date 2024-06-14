@@ -1,0 +1,16 @@
+library(readxl)
+#Reproducciones_de_canciones= read_excel("~/Desktop/Gödelianos/Reproducciones de canciones.xlsx",col_types = "numeric")
+Reproducciones_de_canciones= read_excel("Reproducciones de canciones.xlsx",col_types = "numeric")
+names(Reproducciones_de_canciones)=c("# de reprod.",seq(2:ncol(Reproducciones_de_canciones)))
+Reproducciones_de_canciones=+replace(Reproducciones_de_canciones,is.na(Reproducciones_de_canciones),0)
+Reproducciones_de_canciones=Reproducciones_de_canciones[-NROW(Reproducciones_de_canciones),]
+x=Reproducciones_de_canciones[-1]
+for (i in 1:ncol(x)) { print(i)
+  print(shapiro.test(x[,i]))  }
+#No siguen normales, ¿que siguen?
+
+#Hacer otro bucle para plot(x)
+?matplot
+matplot(x,type = "c")
+
+
